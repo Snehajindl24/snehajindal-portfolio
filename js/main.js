@@ -421,6 +421,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   initMailType();
   initProjectGallery();
   initContactForm();
+  initBlogModal();  
   initLiveProductRotator();
   initMisc();
 });
@@ -561,5 +562,74 @@ function initContactForm(){
   // Clear error state as user types
   form.querySelectorAll('input, textarea').forEach(inp => {
     inp.addEventListener('input', () => inp.closest('.cf-field')?.classList.remove('error'));
+  });
+}
+/* ─── 19. 🆕 BLOG MODAL ─── */
+function initBlogModal(){
+  const modal    = document.getElementById('blogModal');
+  const openBtn  = document.getElementById('openBlogModal');
+  const closeEls = modal?.querySelectorAll('[data-close-modal]');
+  const cards    = modal?.querySelectorAll('.blog-card');
+  const articles = modal?.querySelectorAll('.blog-article');
+  const reader   = document.getElementById('blogReader');
+
+  if(!modal || !openBtn) return;
+
+    const openModal = () => {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('blog-modal-open');
+    lenis?.stop();
+
+    // 🆕 Tell Lenis to ignore scroll inside the modal
+    modal.querySelectorAll('.blog-list, .blog-reader').forEach(el => {
+      el.setAttribute('data-lenis-prevent', '');
+    });
+
+    // Auto-open first article on desktop
+    if(window.innerWidth > 820){
+      setTimeout(() => {
+        if(!reader.classList.contains('has-selection')){
+          showArticle('migration');
+        }
+      }, 400);
+    }
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('blog-modal-open');
+    lenis?.start();
+
+    // Reset selection after close animation completes
+    setTimeout(() => {
+      cards.forEach(c => c.classList.remove('is-active'));
+      articles.forEach(a => a.classList.remove('is-active'));
+      reader.classList.remove('has-selection');
+    }, 500);
+  };
+
+  const showArticle = (id) => {
+    cards.forEach(c => c.classList.toggle('is-active', c.dataset.blogId === id));
+    articles.forEach(a => a.classList.toggle('is-active', a.dataset.blogContent === id));
+    reader.classList.add('has-selection');
+    reader.scrollTop = 0;
+  };
+
+  // Open modal
+  openBtn.addEventListener('click', openModal);
+
+  // Close via X or backdrop
+  closeEls.forEach(el => el.addEventListener('click', closeModal));
+
+  // Close on ESC
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  // Card clicks — show corresponding article
+  cards.forEach(card => {
+    card.addEventListener('click', () => showArticle(card.dataset.blogId));
   });
 }

@@ -426,7 +426,26 @@
 
 </div>
 </section>
-
+<!-- ============================================
+     WRITING / BLOG SECTION (Trigger)
+     ============================================ -->
+<section class="writing-section" id="writing">
+  <div class="writing-container">
+    <div class="writing-header">
+      <span class="writing-eyebrow">— writing</span>
+      <h2 class="writing-title">
+        Things I've <em>learned</em> while shipping.
+      </h2>
+      <p class="writing-subtitle">
+        Short notes on debugging production, interdisciplinary thinking, and building things people use.
+      </p>
+    </div>
+    <button class="writing-cta" id="openBlogModal">
+      Read the notes
+      <span class="writing-cta-arrow">→</span>
+    </button>
+  </div>
+</section>
 
 <!-- ══════════════════════════════════════
      SKILLS
@@ -672,5 +691,169 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="js/main.js"></script>
+<!-- ============================================
+     BLOG MODAL (Overlay)
+     ============================================ -->
+<div class="blog-modal" id="blogModal" aria-hidden="true">
+  <div class="blog-modal-backdrop" data-close-modal></div>
+
+  <div class="blog-modal-container">
+    <!-- Header -->
+    <div class="blog-modal-header">
+      <div class="blog-modal-brand">
+        <span class="blog-modal-logo">SJ</span>
+        <span class="blog-modal-label">writing</span>
+      </div>
+      <button class="blog-modal-close" data-close-modal aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Body: Two panes -->
+    <div class="blog-modal-body">
+      <!-- LEFT: Card List -->
+      <aside class="blog-list" id="blogList" data-lenis-prevent>
+        <div class="blog-list-header">
+          <span class="blog-list-count">2 notes</span>
+        </div>
+
+        <!-- CARD 1 -->
+        <button class="blog-card" data-blog-id="migration">
+          <div class="blog-card-meta">
+            <span class="blog-card-dot"></span>
+            <span class="blog-card-time">2 min read</span>
+          </div>
+          <h3 class="blog-card-title">
+            My PennyWise users kept losing their data — here's how I fixed it.
+          </h3>
+          <div class="blog-card-tags">
+            <span class="blog-tag">Flask</span>
+            <span class="blog-tag">PostgreSQL</span>
+            <span class="blog-tag">Debugging</span>
+          </div>
+        </button>
+
+        <!-- CARD 2 -->
+        <button class="blog-card" data-blog-id="finance">
+          <div class="blog-card-meta">
+            <span class="blog-card-dot"></span>
+            <span class="blog-card-time">2 min read</span>
+          </div>
+          <h3 class="blog-card-title">
+            Why a CS student took four finance electives.
+          </h3>
+          <div class="blog-card-tags">
+            <span class="blog-tag">AI</span>
+            <span class="blog-tag">LLM</span>
+            <span class="blog-tag">Finance</span>
+          </div>
+        </button>
+      </aside>
+
+      <!-- RIGHT: Article Reader -->
+      <article class="blog-reader" id="blogReader" data-lenis-prevent>
+        <!-- Default (empty) state -->
+        <div class="blog-empty">
+          <div class="blog-empty-icon">📝</div>
+          <p class="blog-empty-text">Pick a note to start reading.</p>
+        </div>
+
+        <!-- Article 1: Migration -->
+        <div class="blog-article" data-blog-content="migration">
+          <div class="blog-article-meta">
+            <span class="blog-tag">Flask</span>
+            <span class="blog-tag">PostgreSQL</span>
+            <span class="blog-tag">Debugging</span>
+            <span class="blog-article-time">· 2 min read</span>
+          </div>
+
+          <h1 class="blog-article-title">
+            My PennyWise users kept losing their data — here's how I fixed it.
+          </h1>
+
+          <div class="blog-article-body">
+            <h3>The Bug</h3>
+            <p>PennyWise is my personal finance tracker. One Monday morning, I logged in and everything was gone. Every transaction. Every budget. My account itself — wiped.</p>
+            <p>The app worked perfectly. It just had zero memory of ever knowing me.</p>
+            <p>This wasn't a bug in my code. It was a bug in my understanding of how the cloud actually works.</p>
+
+            <h3>The Problem</h3>
+            <p>I had shipped a Flask app on Render's free tier using SQLite. SQLite stores everything in a single <code>.db</code> file on the server's filesystem.</p>
+            <p>Turns out, Render's free tier uses an <strong>ephemeral filesystem</strong>. Every redeploy — or every spin-down after inactivity — wipes it. My database, along with every user's data, got deleted on every restart.</p>
+            <p>I had been running a demo, not a product.</p>
+
+            <h3>The Fix</h3>
+            <p>I migrated to Supabase Postgres. Took under thirty minutes:</p>
+            <ol>
+              <li>Spin up a Supabase project. Grab the <strong>Transaction Pooler URI</strong> (port 6543 — not the direct 5432, which breaks on serverless hosts).</li>
+              <li>Add <code>DATABASE_URL</code> as an env var on Render.</li>
+              <li>My <code>config.py</code> already had a fallback: if the env var exists, use Postgres; else, fall back to local SQLite. Zero code changes needed.</li>
+              <li>Redeploy. Tables auto-created. Done.</li>
+            </ol>
+            <p>I made a fresh account, triggered a manual redeploy — the exact action that used to nuke everything.</p>
+            <p>Everything was still there.</p>
+
+            <h3>The Lesson</h3>
+            <p><strong>"It works locally" is a trap.</strong> Production isn't just your code on someone else's computer — it's a different set of constraints. Read the docs before you deploy anything you'd actually miss.</p>
+            <p>Free tiers are free for a reason.</p>
+
+            <p class="blog-article-footer">
+              <em>PennyWise is live at <a href="https://pennywise-ztq5.onrender.com" target="_blank" rel="noopener">pennywise-ztq5.onrender.com</a>.</em>
+            </p>
+          </div>
+        </div>
+
+        <!-- Article 2: Finance -->
+        <div class="blog-article" data-blog-content="finance">
+          <div class="blog-article-meta">
+            <span class="blog-tag">AI</span>
+            <span class="blog-tag">LLM</span>
+            <span class="blog-tag">Finance</span>
+            <span class="blog-article-time">· 2 min read</span>
+          </div>
+
+          <h1 class="blog-article-title">
+            Why a CS student took four finance electives.
+          </h1>
+
+          <div class="blog-article-body">
+            <h3>The Elective Nobody Picked</h3>
+            <p>Third year at Thapar. Elective enrollment opens. My batch picks Cloud, AI, and Mobile Dev.</p>
+            <p>I pick <strong>Derivative Markets</strong>.</p>
+            <p>One friend asked if I was switching to an MBA. I wasn't. But everyone around me was optimizing for the same three career paths and building the same three portfolio projects. I wanted an unfair advantage.</p>
+            <p>Turns out, it was two hours of financial modeling every week.</p>
+
+            <h3>The Insight That Became StockPulse</h3>
+            <p>Halfway through the course, we studied <strong>sentiment as a market driver</strong> — the idea that stock prices reflect the <em>stories</em> investors tell, not just the fundamentals.</p>
+            <p>Meanwhile, in CS, we were exploring LLMs and how well they read unstructured text.</p>
+            <p>The connection was obvious: <strong>LLMs are extraordinarily good at reading sentiment from news. And sentiment moves stocks.</strong></p>
+            <p>Existing tools for this are either enterprise-priced (Bloomberg) or oversimplified retail apps. I wanted to give a retail investor real signal quality, for free, in under two seconds.</p>
+            <p>That became <strong>StockPulse</strong>.</p>
+
+            <h3>Where Finance Actually Mattered</h3>
+            <p>Anyone can wire up an API. What the finance classes changed was <strong>prompt design</strong>.</p>
+            <p>My first prompt was naive: <em>"Is this news positive or negative?"</em> The model kept flagging "record profits" headlines as bullish — even when the stock was falling because guidance was weak.</p>
+            <p>Financial Statement Analysis had taught me why: <strong>markets don't react to news; they react to news relative to expectations.</strong></p>
+            <p>I rewrote the prompt to weight surprises over confirmations, and forward guidance over trailing results. Signal quality jumped immediately.</p>
+            <p>Not because the model got smarter — because I asked a smarter question.</p>
+
+            <h3>The Takeaway</h3>
+            <p>You don't have to pick finance. But pick <em>something</em> outside CS.</p>
+            <p>Bio + CS → medtech. Psych + CS → HCI. Design + CS → dev tools.</p>
+            <p>The middle of a Venn diagram is lonely. But it's where the interesting work is.</p>
+            <p>Best four credits I've spent.</p>
+
+            <p class="blog-article-footer">
+              <em>StockPulse is live at <a href="https://stockpulse-fqgk.onrender.com" target="_blank" rel="noopener">stockpulse-fqgk.onrender.com</a>.</em>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
 </body>
 </html>
