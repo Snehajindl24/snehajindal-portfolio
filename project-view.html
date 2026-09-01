@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details — Sneha Jindal</title>
+  <meta name="description" content="Project details by Sneha Jindal.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="section-transition"></div>
+
+  <header class="nav" id="nav">
+    <a href="index.html#top" class="nav-logo" data-cursor="hover">SJ<em>®</em></a>
+    <nav class="nav-links">
+      <a href="index.html#work" data-cursor="hover"><span>01</span> Work</a>
+      <a href="index.html#work" data-cursor="hover"><span>02</span> Projects</a>
+      <a href="index.html#about" data-cursor="hover"><span>03</span> About</a>
+      <a href="index.html#skills" data-cursor="hover"><span>04</span> Skills</a>
+      <a href="index.html#contact" data-cursor="hover"><span>05</span> Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#work">Projects</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="index.html#markets">Markets</a>
+    <a href="index.html#life">Life</a>
+    <a href="index.html#contact">Contact</a>
+    <div class="mobile-socials">
+      <a href="https://github.com/Snehajindl24" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/sneha-jindal-ab0595358" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <main class="detail-shell" id="top">
+    <div class="detail-topbar">
+      <div class="back-links">
+        <a href="index.html#work" class="back-link" data-cursor="hover">← Back to main page</a>
+      </div>
+    </div>
+
+    <div id="project-detail"></div>
+  </main>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (navToggle && mobileMenu) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+  </script>
+  <script>
+    const projectData = {
+      leadpilot: {
+        index: '01',
+        title: 'LeadPilot',
+        featured: true,
+        type: 'AI-Powered CRM · Full-Stack SaaS',
+        desc: 'A production CRM that helps sales teams manage leads, track deals on a Kanban pipeline, and get AI-generated insights on where revenue is leaking. Built end-to-end, deployed to the cloud, and installable as a PWA on any device.',
+        bullets: [
+          'Full auth system, multi-company workspaces, lead CRUD & drag-drop deal pipeline',
+          'Google Gemini API integration generating live pipeline health insights',
+          'Migrated SQLite → cloud PostgreSQL; deployed on Render with CI from GitHub',
+          'Progressive Web App — custom manifest, service worker & installable on mobile'
+        ],
+        stack: ['Python','Flask','PostgreSQL','Supabase','Gemini API','SQLAlchemy','JavaScript','PWA','Render'],
+        liveUrl: 'https://leadpilot-56ml.onrender.com',
+        githubUrl: 'https://github.com/Snehajindl24/LeadPilot',
+        images: ['leadpilot-1.jpg','leadpilot-2.jpg','leadpilot-3.jpg','leadpilot-4.jpg']
+      },
+      stockpulse: {
+        index: '02',
+        title: 'StockPulse',
+        featured: true,
+        type: 'AI Signal Room · Fintech · LLM',
+        desc: 'An AI-powered stock sentiment analyzer that turns market noise into a signal. Enter any US ticker → get real-time price data, aggregated news headlines, and a Llama 3.3 70B generated BUY / HOLD / SELL verdict with confidence scoring — bridging my CS stack with my derivatives coursework.',
+        bullets: [
+          'Real-time stock data (Finnhub) + news aggregation (NewsAPI) + LLM sentiment (Groq / Llama 3.3 70B)',
+          'Persistent watchlist, compare mode (up to 4 tickers), sentiment history with interactive SVG charts',
+          'Signal feed that surfaces meaningful shifts across tracked tickers over time',
+          'Deployed as an installable PWA on Render with service-worker caching & smart install prompts'
+        ],
+        stack: ['Python','Flask','Groq','Llama 3.3 70B','Finnhub API','NewsAPI','Vanilla JS','SVG','PWA','Render'],
+        liveUrl: 'https://stockpulse-fqgk.onrender.com',
+        githubUrl: 'https://github.com/Snehajindl24/StockPulse',
+        images: ['stockpulse-1.jpg','stockpulse-2.jpg','stockpulse-3.jpg','stockpulse-4.jpg']
+      },
+      watermarking: {
+        index: '03',
+        title: 'Invisible & Robust Watermarking',
+        featured: false,
+        type: 'Computer Vision · Deep Learning',
+        desc: 'A watermarking system that hides ownership data inside images invisibly — and survives compression, cropping and noise. Built on DWT + SVD with a CNN-based decoder. Team project · certified by Thapar Institute.',
+        bullets: [
+          'PSNR > 38 dB across 200+ test images',
+          'DWT + SVD embedding with CNN decoder for extraction',
+          'Web interface for image upload & watermark verification',
+          'Robustness benchmarked with PSNR, SSIM & BER metrics'
+        ],
+        stack: ['Python','OpenCV','TensorFlow','NumPy','DWT','SVD'],
+        liveUrl: 'https://invisible-watermarking-psi.vercel.app/',
+        githubUrl: 'https://github.com/samiksha-bansal1/Invisible-Watermarking',
+        images: ['watermarking-1.jpg','watermarking-2.jpg']
+      },
+      finsight: {
+        index: '04',
+        title: 'Financial Statement Analytics',
+        featured: false,
+        type: 'Financial Statement Analytics · Power BI Dashboard',
+        desc: 'A full-stack financial analytics dashboard that turns raw multi-sector financial statements into an interactive risk and performance report. Covers 8 NSE-listed companies across IT, Banking and FMCG — from automated Python ETL through a star-schema data model to a 4-page interactive Power BI report with drill-through analysis and a composite financial health score.',
+        bullets: [
+          'Automated ETL pipeline in Python (yfinance) feeding a star-schema model — 3 fact tables, 2 dimension tables — for scalable multi-sector reporting',
+          '15+ custom DAX measures (ROE, margins, Debt-to-Equity, Free Cash Flow, YoY growth) plus a composite Financial Health Score with Red/Amber/Green risk flags',
+          '4-page interactive Power BI report: executive KPI overview, trend analysis with a what-if margin stress simulator, sector benchmarking heatmap, and company-level drill-through',
+          'Surfaced a cross-sector insight that sector averages mask firm-level performance gaps (e.g. Wipro\'s Health Score of 70 vs. sector-leading TCS/Infosys at 100)'
+        ],
+        stack: ['Python','yfinance','pandas','Power BI','Power Query (M)','DAX','Star Schema'],
+        liveUrl: null,
+        githubUrl: 'https://github.com/Snehajindl24/financial-statement-analytics-powerbi',
+        images: ['finsight-1.jpg','finsight-2.jpg','finsight-3.jpg','finsight-4.jpg']
+      }
+    };
+
+    const slug = new URLSearchParams(window.location.search).get('slug') || 'leadpilot';
+    const project = projectData[slug] || projectData.leadpilot;
+    const detail = document.getElementById('project-detail');
+
+    const renderBadges = (project) => {
+      const live = project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" class="link-arrow" data-cursor="hover">Live Site <i>↗</i></a>` : '';
+      return `${live}<a href="${project.githubUrl}" target="_blank" class="link-arrow" data-cursor="hover">GitHub <i>↗</i></a>`;
+    };
+
+    const renderGallery = (images) => {
+      const items = images.map((src, index) => `<img class="g-img ${index === 0 ? 'is-active' : ''}" src="assets/images/projects/${src}" alt="${project.title} ${index + 1}" onerror="this.style.opacity=0">`).join('');
+      const dots = images.map((_, index) => `<button class="g-dot ${index === 0 ? 'is-active' : ''}" data-idx="${index}" aria-label="Image ${index + 1}"></button>`).join('');
+      return `
+        <div class="project-media media" data-label="projects/${images[0].split('-')[0]}.jpg" data-cursor="view">
+          <div class="tilt-inner">
+            <div class="gallery" data-gallery>
+              ${items}
+              <div class="g-dots">${dots}</div>
+            </div>
+            ${project.liveUrl ? '<span class="live-badge"><i></i> Live</span>' : ''}
+            <div class="hover-label"><span>View Project →</span></div>
+          </div>
+        </div>
+      `;
+    };
+
+    detail.innerHTML = `
+      <article class="project ${project.featured ? 'featured' : ''} detail-project">
+        <div class="project-index">${project.index}${project.featured ? ' <em>/ Featured</em>' : ''}</div>
+        ${renderGallery(project.images)}
+        <div class="project-info">
+          <h3>${project.title}</h3>
+          <p class="project-type">${project.type}</p>
+          <p class="project-desc">${project.desc}</p>
+          <ul class="project-points">
+            ${project.bullets.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+          <div class="stack">
+            ${project.stack.map(tag => `<span>${tag}</span>`).join('')}
+          </div>
+          <div class="project-links">
+            ${renderBadges(project)}
+          </div>
+        </div>
+      </article>
+    `;
+
+    document.title = `${project.title} — Sneha Jindal`;
+
+    document.querySelectorAll('[data-gallery]').forEach(gallery => {
+      const imgs = gallery.querySelectorAll('.g-img');
+      const dots = gallery.querySelectorAll('.g-dot');
+      if (imgs.length <= 1) return;
+      let idx = 0;
+      const go = (next) => {
+        idx = (next + imgs.length) % imgs.length;
+        imgs.forEach((img, i) => img.classList.toggle('is-active', i === idx));
+        dots.forEach((dot, i) => dot.classList.toggle('is-active', i === idx));
+      };
+      dots.forEach(dot => {
+        dot.addEventListener('click', (event) => {
+          event.preventDefault();
+          go(Number(dot.dataset.idx));
+        });
+      });
+      setInterval(() => go(idx + 1), 3200);
+    });
+  </script>
+</body>
+</html>

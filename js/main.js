@@ -355,8 +355,9 @@ function initMailType(){
 
 /* ─── 16. MISC ─── */
 function initMisc(){
-  document.getElementById('year').textContent = new Date().getFullYear();
-  document.querySelectorAll('.media img').forEach(img=>{
+const yearEl = document.getElementById('year');
+if(yearEl) yearEl.textContent = new Date().getFullYear();
+document.querySelectorAll('.media img').forEach(img=>{
     const done = ()=>{ if(img.naturalWidth) img.closest('.media').removeAttribute('data-label'); };
     img.complete ? done() : img.addEventListener('load', done);
   });
