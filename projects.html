@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Sneha Jindal</title>
+  <meta name="description" content="Selected projects by Sneha Jindal — product, fintech, ML, analytics and full-stack work.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="section-transition"></div>
+
+  <header class="nav" id="nav">
+    <a href="index.html#top" class="nav-logo" data-cursor="hover">SJ<em>®</em></a>
+    <nav class="nav-links">
+      <a href="index.html#work" data-cursor="hover"><span>01</span> Work</a>
+      <a href="index.html#work" data-cursor="hover"><span>02</span> Projects</a>
+      <a href="index.html#about" data-cursor="hover"><span>03</span> About</a>
+      <a href="index.html#skills" data-cursor="hover"><span>04</span> Skills</a>
+      <a href="index.html#contact" data-cursor="hover"><span>05</span> Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#work">Projects</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#skills">Skills</a>
+    <a href="index.html#markets">Markets</a>
+    <a href="index.html#life">Life</a>
+    <a href="index.html#contact">Contact</a>
+    <div class="mobile-socials">
+      <a href="https://github.com/Snehajindl24" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/sneha-jindal-ab0595358" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <main class="project-page-shell" id="top">
+    <section class="project-archive-header">
+      <span class="project-archive-kicker">Selected work</span>
+      <h1 class="project-archive-title">Projects</h1>
+    </section>
+
+    <div class="project-archive-grid">
+      <article class="archive-card">
+        <div class="archive-card-top">
+          <div class="archive-card-index">01 / Featured</div>
+          <span class="archive-card-kicker">SaaS</span>
+        </div>
+        <h3>LeadPilot</h3>
+        <p class="project-type">AI-Powered CRM · Full-Stack SaaS</p>
+        <p class="archive-card-desc">A production CRM that helps sales teams manage leads, track deals, and surface AI-driven pipeline insights.</p>
+        <div class="archive-card-links">
+          <a href="project-view.html?slug=leadpilot" class="archive-card-link" data-cursor="hover">Details about project <i>↗</i></a>
+        </div>
+      </article>
+
+      <article class="archive-card">
+        <div class="archive-card-top">
+          <div class="archive-card-index">02 / Featured</div>
+          <span class="archive-card-kicker">Fintech</span>
+        </div>
+        <h3>StockPulse</h3>
+        <p class="project-type">AI Signal Room · Fintech · LLM</p>
+        <p class="archive-card-desc">An AI stock sentiment dashboard that turns real-time news and price data into clear BUY/HOLD/SELL signals.</p>
+        <div class="archive-card-links">
+          <a href="project-view.html?slug=stockpulse" class="archive-card-link" data-cursor="hover">Details about project <i>↗</i></a>
+        </div>
+      </article>
+
+      <article class="archive-card">
+        <div class="archive-card-top">
+          <div class="archive-card-index">03</div>
+          <span class="archive-card-kicker">CV</span>
+        </div>
+        <h3>Invisible &amp; Robust Watermarking</h3>
+        <p class="project-type">Computer Vision · Deep Learning</p>
+        <p class="archive-card-desc">A robust image watermarking system built to survive compression, noise, and cropping while staying visually invisible.</p>
+        <div class="archive-card-links">
+          <a href="project-view.html?slug=watermarking" class="archive-card-link" data-cursor="hover">Details about project <i>↗</i></a>
+        </div>
+      </article>
+
+      <article class="archive-card">
+        <div class="archive-card-top">
+          <div class="archive-card-index">04</div>
+          <span class="archive-card-kicker">Analytics</span>
+        </div>
+        <h3>Financial Statement Analytics</h3>
+        <p class="project-type">Financial Statement Analytics · Power BI Dashboard</p>
+        <p class="archive-card-desc">A dashboard that transforms multi-company financial statements into a comparable risk and performance view.</p>
+        <div class="archive-card-links">
+          <a href="project-view.html?slug=finsight" class="archive-card-link" data-cursor="hover">Details about project <i>↗</i></a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (navToggle && mobileMenu) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navToggle.classList.remove('open');
+          mobileMenu.classList.remove('open');
+        });
+      });
+    }
+  </script>
+</body>
+</html>

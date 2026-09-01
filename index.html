@@ -63,9 +63,10 @@
 
   <nav class="nav-links">
     <a href="#work"      data-cursor="hover"><span>01</span> Work</a>
-    <a href="#about"     data-cursor="hover"><span>02</span> About</a>
-    <a href="#skills"    data-cursor="hover"><span>03</span> Skills</a>
-    <a href="#contact"   data-cursor="hover"><span>04</span> Contact</a>
+    <a href="#work"      data-cursor="hover"><span>02</span> Projects</a>
+    <a href="#about"     data-cursor="hover"><span>03</span> About</a>
+    <a href="#skills"    data-cursor="hover"><span>04</span> Skills</a>
+    <a href="#contact"   data-cursor="hover"><span>05</span> Contact</a>
   </nav>
 
   <button class="nav-toggle" id="navToggle" aria-label="Menu">
@@ -76,6 +77,7 @@
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#work">Work</a>
+  <a href="#work">Projects</a>
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
   <a href="#markets">Markets</a>
@@ -374,17 +376,17 @@
     </div>
   </article>
 
-  <!-- PROJECT 04 — PENNYWISE -->
+  <!-- PROJECT 04 — FINSIGHT -->
   <article class="project">
     <div class="project-index">04</div>
 
-    <div class="project-media media" data-label="projects/pennywise.jpg" data-cursor="view">
+    <div class="project-media media" data-label="projects/finsight.jpg" data-cursor="view">
       <div class="tilt-inner">
         <div class="gallery" data-gallery>
-          <img class="g-img is-active" src="assets/images/projects/pennywise-1.jpg" alt="PennyWise dashboard" onerror="this.style.opacity=0">
-          <img class="g-img" src="assets/images/projects/pennywise-2.jpg" alt="PennyWise budgets" onerror="this.style.opacity=0">
-          <img class="g-img" src="assets/images/projects/pennywise-3.jpg" alt="PennyWise charts" onerror="this.style.opacity=0">
-          <img class="g-img" src="assets/images/projects/pennywise-4.jpg" alt="PennyWise dark mode" onerror="this.style.opacity=0">
+          <img class="g-img is-active" src="assets/images/projects/finsight-1.jpg" alt="FinSight dashboard" onerror="this.style.opacity=0">
+          <img class="g-img" src="assets/images/projects/finsight-2.jpg" alt="FinSight trend analysis" onerror="this.style.opacity=0">
+          <img class="g-img" src="assets/images/projects/finsight-3.jpg" alt="FinSight benchmark heatmap" onerror="this.style.opacity=0">
+          <img class="g-img" src="assets/images/projects/finsight-4.jpg" alt="FinSight company drill-through" onerror="this.style.opacity=0">
           <div class="g-dots">
             <button class="g-dot is-active" data-idx="0" aria-label="Image 1"></button>
             <button class="g-dot" data-idx="1" aria-label="Image 2"></button>
@@ -392,37 +394,36 @@
             <button class="g-dot" data-idx="3" aria-label="Image 4"></button>
           </div>
         </div>
-        <span class="live-badge"><i></i> Live</span>
         <div class="hover-label"><span>View Project →</span></div>
       </div>
     </div>
 
     <div class="project-info">
-      <h3>PennyWise</h3>
-      <p class="project-type">Personal Finance Tracker · Full-Stack SaaS</p>
+      <h3>Financial Statement Analytics</h3>
+      <p class="project-type">Financial Statement Analytics · Power BI Dashboard</p>
       <p class="project-desc">
-        A full-stack personal finance tracker that turns messy spending into clarity —
-        log transactions in seconds, set smart monthly budgets, and visualise where
-        every rupee is really going. Now <em>live in production</em> with secure auth,
-        dark mode &amp; CSV export.
+        A full-stack financial analytics dashboard that turns raw multi-sector financial statements into an interactive risk and performance report. Covers 8 NSE-listed companies across IT, Banking and FMCG — from automated Python ETL through a star-schema data model to a 4-page interactive Power BI report with drill-through analysis and a composite financial health score.
       </p>
       <ul class="project-points">
-        <li>Secure auth with bcrypt password hashing + session-based login &amp; user isolation</li>
-        <li>Smart monthly budgets per category with progress bars, 80% warnings &amp; over-limit alerts</li>
-        <li>Interactive donut &amp; bar charts (Chart.js) — expenses by category, income vs expense trends</li>
-        <li>Search, filter, CSV export (filter-aware), dark mode &amp; toast notifications</li>
-        <li>Deployed on Render with cloud PostgreSQL (Supabase), polished landing page &amp; fully responsive design</li>
+        <li>Automated ETL pipeline in Python (yfinance) feeding a star-schema model — 3 fact tables, 2 dimension tables — for scalable multi-sector reporting</li>
+        <li>15+ custom DAX measures (ROE, margins, Debt-to-Equity, Free Cash Flow, YoY growth) plus a composite Financial Health Score with Red/Amber/Green risk flags</li>
+        <li>4-page interactive Power BI report: executive KPI overview, trend analysis with a what-if margin stress simulator, sector benchmarking heatmap, and company-level drill-through</li>
+        <li>Surfaced a cross-sector insight that sector averages mask firm-level performance gaps (e.g. Wipro's Health Score of 70 vs. sector-leading TCS/Infosys at 100)</li>
       </ul>
       <div class="stack">
-        <span>Python</span><span>Flask</span><span>SQLAlchemy</span><span>PostgreSQL</span><span>Supabase</span>
-        <span>Chart.js</span><span>Bcrypt</span><span>Vanilla JS</span><span>Font Awesome</span><span>Render</span>
+        <span>Python</span><span>yfinance</span><span>pandas</span><span>Power BI</span><span>Power Query (M)</span><span>DAX</span><span>Star Schema</span>
       </div>
       <div class="project-links">
-        <a href="https://pennywise-ztq5.onrender.com" target="_blank" class="link-arrow" data-cursor="hover">Live Site <i>↗</i></a>
-        <a href="https://github.com/Snehajindl24/pennywise" target="_blank" class="link-arrow" data-cursor="hover">GitHub <i>↗</i></a>
+        <a href="https://github.com/Snehajindl24/financial-statement-analytics-powerbi" target="_blank" class="link-arrow" data-cursor="hover">GitHub <i>↗</i></a>
       </div>
     </div>
   </article>
+
+  <div class="also-built">
+    <span class="ab-label">Also built</span>
+    <a href="https://pennywise-ztq5.onrender.com" target="_blank" class="link-arrow" data-cursor="hover">PennyWise <i>↗</i> — personal finance tracker</a>
+    <a href="https://github.com/Snehajindl24/pennywise" target="_blank" class="link-arrow" data-cursor="hover">GitHub <i>↗</i></a>
+  </div>
 
 </div>
 </section>
@@ -717,18 +718,15 @@
       <!-- LEFT: Card List -->
       <aside class="blog-list" id="blogList" data-lenis-prevent>
         <div class="blog-list-header">
-          <span class="blog-list-count">2 notes</span>
+          <span class="blog-list-count">3 notes</span>
         </div>
 
-        <!-- CARD 1 -->
         <button class="blog-card" data-blog-id="migration">
           <div class="blog-card-meta">
             <span class="blog-card-dot"></span>
             <span class="blog-card-time">2 min read</span>
           </div>
-          <h3 class="blog-card-title">
-            My PennyWise users kept losing their data — here's how I fixed it.
-          </h3>
+          <h3 class="blog-card-title">My PennyWise users kept losing their data — here's how I fixed it.</h3>
           <div class="blog-card-tags">
             <span class="blog-tag">Flask</span>
             <span class="blog-tag">PostgreSQL</span>
@@ -736,32 +734,39 @@
           </div>
         </button>
 
-        <!-- CARD 2 -->
         <button class="blog-card" data-blog-id="finance">
           <div class="blog-card-meta">
             <span class="blog-card-dot"></span>
             <span class="blog-card-time">2 min read</span>
           </div>
-          <h3 class="blog-card-title">
-            Why a CS student took four finance electives.
-          </h3>
+          <h3 class="blog-card-title">Why a CS student took four finance electives.</h3>
           <div class="blog-card-tags">
             <span class="blog-tag">AI</span>
             <span class="blog-tag">LLM</span>
             <span class="blog-tag">Finance</span>
           </div>
         </button>
+
+        <button class="blog-card" data-blog-id="finsight">
+          <div class="blog-card-meta">
+            <span class="blog-card-dot"></span>
+            <span class="blog-card-time">3 min read</span>
+          </div>
+          <h3 class="blog-card-title">Building a financial statement dashboard that tells the truth behind the numbers.</h3>
+          <div class="blog-card-tags">
+            <span class="blog-tag">Power BI</span>
+            <span class="blog-tag">DAX</span>
+            <span class="blog-tag">Finance</span>
+          </div>
+        </button>
       </aside>
 
-      <!-- RIGHT: Article Reader -->
       <article class="blog-reader" id="blogReader" data-lenis-prevent>
-        <!-- Default (empty) state -->
         <div class="blog-empty">
           <div class="blog-empty-icon">📝</div>
           <p class="blog-empty-text">Pick a note to start reading.</p>
         </div>
 
-        <!-- Article 1: Migration -->
         <div class="blog-article" data-blog-content="migration">
           <div class="blog-article-meta">
             <span class="blog-tag">Flask</span>
@@ -769,11 +774,7 @@
             <span class="blog-tag">Debugging</span>
             <span class="blog-article-time">· 2 min read</span>
           </div>
-
-          <h1 class="blog-article-title">
-            My PennyWise users kept losing their data — here's how I fixed it.
-          </h1>
-
+          <h1 class="blog-article-title">My PennyWise users kept losing their data — here's how I fixed it.</h1>
           <div class="blog-article-body">
             <h3>The Bug</h3>
             <p>PennyWise is my personal finance tracker. One Monday morning, I logged in and everything was gone. Every transaction. Every budget. My account itself — wiped.</p>
@@ -806,7 +807,6 @@
           </div>
         </div>
 
-        <!-- Article 2: Finance -->
         <div class="blog-article" data-blog-content="finance">
           <div class="blog-article-meta">
             <span class="blog-tag">AI</span>
@@ -814,11 +814,7 @@
             <span class="blog-tag">Finance</span>
             <span class="blog-article-time">· 2 min read</span>
           </div>
-
-          <h1 class="blog-article-title">
-            Why a CS student took four finance electives.
-          </h1>
-
+          <h1 class="blog-article-title">Why a CS student took four finance electives.</h1>
           <div class="blog-article-body">
             <h3>The Elective Nobody Picked</h3>
             <p>Third year at Thapar. Elective enrollment opens. My batch picks Cloud, AI, and Mobile Dev.</p>
@@ -842,12 +838,46 @@
 
             <h3>The Takeaway</h3>
             <p>You don't have to pick finance. But pick <em>something</em> outside CS.</p>
-            <p>Bio + CS → medtech. Psych + CS → HCI. Design + CS → dev tools.</p>
-            <p>The middle of a Venn diagram is lonely. But it's where the interesting work is.</p>
-            <p>Best four credits I've spent.</p>
-
+            <p>That extra lens changes how you reason about systems, risk, and incentives.</p>
             <p class="blog-article-footer">
-              <em>StockPulse is live at <a href="https://stockpulse-fqgk.onrender.com" target="_blank" rel="noopener">stockpulse-fqgk.onrender.com</a>.</em>
+              <em>For me, it eventually showed up in market sentiment, portfolio decisions, and the dashboards I now build.</em>
+            </p>
+          </div>
+        </div>
+
+        <div class="blog-article" data-blog-content="finsight">
+          <div class="blog-article-meta">
+            <span class="blog-tag">Power BI</span>
+            <span class="blog-tag">DAX</span>
+            <span class="blog-tag">Finance</span>
+            <span class="blog-article-time">· 3 min read</span>
+          </div>
+          <h1 class="blog-article-title">Building a financial statement dashboard that tells the truth behind the numbers.</h1>
+          <div class="blog-article-body">
+            <h3>The problem with raw statements</h3>
+            <p>Financial statements are full of useful information — but rarely in a format someone can act on quickly.</p>
+            <p>Even when you have revenue, margins, debt and cash flow in a spreadsheet, the patterns are easy to miss. Sector averages hide company-specific problems, and a bright quarter can still sit on weak fundamentals.</p>
+            <p>I wanted a way to move from static numbers to decisions.</p>
+
+            <h3>From ETL to decision-ready views</h3>
+            <p>The first step was cleaning the data. I used Python and yfinance to pull financial data for multiple companies across IT, Banking and FMCG, then normalized it into a star schema so the model could scale cleanly.</p>
+            <p>That meant building fact tables for revenue, profitability and balance-sheet metrics, and dimension tables for companies and sectors.</p>
+            <p>Once the data was structured, Power Query and DAX became the real force multipliers — turning raw metrics into ratios, trend logic and risk labels.</p>
+
+            <h3>What made it useful</h3>
+            <p>The dashboard included 15+ custom measures — ROE, margins, debt-to-equity, FCF, YoY growth, and a composite Financial Health Score.</p>
+            <p>That last metric mattered most. It gave rough red/amber/green signals, which made comparisons across companies far easier than reading row after row of finance tables.</p>
+            <p>The report itself was designed around the decisions a stakeholder actually makes: executive summary, trend analysis, sector benchmark comparisons, and company drill-throughs.</p>
+
+            <h3>The key insight</h3>
+            <p>One of the strongest findings was that sector-level averages hide the real story.</p>
+            <p>For example, a company like Wipro could sit at a health score of 70 while the sector-leading firms TCS and Infosys were near 100. The averages suggested stability, but drill-through revealed the underlying performance gap.</p>
+            <p>That was the moment I realized dashboards are not only reporting tools — they are decision lenses.</p>
+
+            <h3>The takeaway</h3>
+            <p>Good analytics doesn't just present numbers. It helps people see what is structurally strong, what is temporarily weak, and what deserves attention next.</p>
+            <p class="blog-article-footer">
+              <em>In finance, the difference between a spreadsheet and a story is often one well-designed dashboard.</em>
             </p>
           </div>
         </div>
