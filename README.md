@@ -1,6 +1,6 @@
 # Sneha Jindal — Portfolio
 
-Personal portfolio · https://snehajindl24.github.io
+Personal portfolio · https://snehajindal-portfolio.vercel.app/
 
 Built from scratch with HTML, CSS, JavaScript, GSAP (ScrollTrigger) and Lenis smooth scroll.
 
